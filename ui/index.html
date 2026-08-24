@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agents vs Souz Analysis</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M7 7.5 2.5 12 7 16.5" />
+              <path d="M17 7.5 21.5 12 17 16.5" />
+              <path d="m14 4-4 16" />
+            </svg>
+          </span>
+          <div>
+            <h1>Agents vs Souz</h1>
+            <p>Local analysis browser</p>
+          </div>
+        </div>
+        <nav class="mode-tabs" aria-label="Analysis mode">
+          <button class="tab-button is-active" type="button" data-mode="repowise">Repowise</button>
+          <button class="tab-button" type="button" data-mode="emerge">Emerge</button>
+        </nav>
+        <div class="server-chip">
+          <span class="dot" aria-hidden="true"></span>
+          <span id="server-label">localhost</span>
+        </div>
+      </header>
+
+      <aside class="sidebar" aria-label="Projects">
+        <div class="sidebar-head">
+          <h2>Projects</h2>
+          <span id="project-count">0</span>
+        </div>
+        <label class="search-box">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" />
+            <path d="m16.5 16.5 4 4" />
+          </svg>
+          <input id="project-filter" type="search" placeholder="Filter projects" autocomplete="off" />
+        </label>
+        <div id="project-list" class="project-list"></div>
+        <a class="outline-button" href="../README.md" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 19.5V5a2 2 0 0 1 2-2h11.5a1.5 1.5 0 0 1 1.5 1.5V21H6a2 2 0 0 1-2-1.5Z" />
+            <path d="M6 17h13" />
+          </svg>
+          Open README
+        </a>
+      </aside>
+
+      <main class="workspace">
+        <section class="project-bar">
+          <div>
+            <p class="eyeless-label">Selected project</p>
+            <h2 id="project-title">Souz</h2>
+          </div>
+          <div class="project-actions">
+            <a id="emerge-report-link" class="primary-button" href="../output/souz/html/emerge.html" target="_blank" rel="noreferrer">
+              Open Emerge report
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 17 17 7" />
+                <path d="M8 7h9v9" />
+              </svg>
+            </a>
+          </div>
+        </section>
+
+        <section class="metric-grid" aria-label="Summary metrics">
+          <article class="metric-card">
+            <p>Repowise health</p>
+            <strong id="metric-health">--</strong>
+            <span id="metric-health-sub">Waiting for data</span>
+          </article>
+          <article class="metric-card">
+            <p>Dead code</p>
+            <strong id="metric-dead-code">--</strong>
+            <span id="metric-dead-code-sub">Waiting for data</span>
+          </article>
+          <article class="metric-card">
+            <p>Emerge SLOC</p>
+            <strong id="metric-sloc">--</strong>
+            <span id="metric-files">Waiting for data</span>
+          </article>
+          <article class="metric-card">
+            <p>Dependency graph</p>
+            <strong id="metric-graph">--</strong>
+            <span id="metric-graph-sub">Waiting for data</span>
+          </article>
+        </section>
+
+        <section class="content-grid">
+          <section class="panel overview-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyeless-label">Overview</p>
+                <h3 id="overview-title">Repowise findings</h3>
+              </div>
+              <span id="analysis-version" class="subtle-chip">Loading</span>
+            </div>
+
+            <div class="score-band">
+              <div class="score-block">
+                <span>Average health</span>
+                <strong id="score-average">--</strong>
+              </div>
+              <div class="score-block">
+                <span>Worst file</span>
+                <strong id="score-worst">--</strong>
+              </div>
+              <div class="score-block">
+                <span>Performance risk</span>
+                <strong id="score-risk">--</strong>
+              </div>
+            </div>
+
+            <div class="two-column">
+              <div>
+                <h4>Lowest-scoring files</h4>
+                <ol id="lowest-files" class="rank-list"></ol>
+              </div>
+              <div>
+                <h4>Report links</h4>
+                <div class="link-stack" id="report-links"></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel artifact-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyeless-label">Artifacts</p>
+                <h3 id="artifact-title">health.txt</h3>
+              </div>
+              <select id="artifact-select" aria-label="Artifact"></select>
+            </div>
+            <pre id="artifact-preview" class="artifact-preview">Loading artifact...</pre>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

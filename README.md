@@ -20,6 +20,22 @@ Requirements:
 - [Souz Go, Go](output/souz-go/html/emerge.html)
 - [PicoClaw, Go](output/picoclaw/html/emerge.html)
 
+## Local UI
+
+This repository includes a static dashboard for browsing the checked-in Emerge and Souz Repowise artifacts:
+
+```bash
+python3 -m http.server 8787 --bind 127.0.0.1
+```
+
+Then open:
+
+```text
+http://127.0.0.1:8787/ui/
+```
+
+The dashboard reads files from `output/`; it does not start Repowise. To open the real Repowise dashboard, run `repowise serve` from the Souz checkout and open `http://127.0.0.1:3000`.
+
 # Ouroboros
 
 https://github.com/joi-lab/ouroboros-desktop
